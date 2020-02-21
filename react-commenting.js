@@ -7,19 +7,19 @@
 class App extends Component{
   constructor(){
     super()
-    // 1.
+    // 1. This is setting a state that will be constently rendered and updated
     this.state = {
       userInput: "",
     }
   }
 
   robot = (e) => {
-    // 2.
+    // 2. This takes in an input from a keyboard know as an event (e) and changes the userInput feild to take input
     this.setState({ userInput: e.target.value})
   }
 
   render(){
-    // 3.
+    // 3. This is destructering the userInput state so it can be used with more ease
     let { userInput } = this.state
 
     return(
@@ -28,16 +28,16 @@ class App extends Component{
 
         <h3>Enter text here:</h3>
         <input
-          {/* 4. */}
+          {/* 4. This is what the user will see where to put the input */}
           onChange={ this.robot }
-          {/* 5. */}
+          {/* 5. this is what recordes the users input as a value*/}
           value={ userInput }
         />
 
         <div>
-          {/* 6. */}
+          {/* 6. This displayes the good robot componet on to the page */}
           <GoodRobot
-            {/* 7. */}
+            {/* 7. this is sending information from the App class to the GoodRobot class using props*/}
             userInput={ userInput }
           />
           <BadRobot
@@ -58,14 +58,14 @@ export default App
 class GoodRobot extends Component{
   render(){
     return(
-      // 8.
+      // 8. Dive tag surronding because return can only render one objects
       <div>
         <h3>Good Robot</h3>
-        {/* 9. */}
+        {/* 9. This takes in the information form the App class as props and displays it to the user*/}
         <h4>I hear you saying { this.props.userInput }. Is that correct?</h4>
       </div>
     )
   }
 }
-// 10.
+// 10. Allows other components to be able to see what this component does.
 export default GoodRobot
